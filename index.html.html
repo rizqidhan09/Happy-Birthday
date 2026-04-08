@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Andini Aprila Putri ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 25%, #fdcb6e 50%, #ff7675 100%);
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Background Animations */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b9d;
+            transform: rotate(-45deg);
+            animation: float 6s infinite linear;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: #ff6b9d;
+            border-radius: 50%;
+            transform: rotate(-45deg);
+        }
+
+        .heart:before {
+            transform: rotate(-45deg) translate(0, -10px);
+        }
+
+        .heart:after {
+            transform: rotate(-45deg) translate(10px, 0);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(-45deg) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(405deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Slides Container */
+        .slides-container {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            color: #fff;
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slide 1 - Opening */
+        #slide1 {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #ff6b9d, #ffd700);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            padding: 10px 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #ff6b9d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Slide 2 - Photo Gallery */
+        .photo-gallery {
+            display: flex;
+            gap: 1rem;
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .photo-item {
+            min-width: 300px;
+            height: 400px;
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://c:\Users\User\Downloads\17an\images 1.jpg') center/cover;
+            filter: blur(3px);
+            z-index: 0;
+        }
+
+        .photo-item.active {
+            transform: scale(1.1);
+            box-shadow: 0 30px 80px rgba(255, 107, 157, 0.5);
+        }
+
+        .photo-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .photo-icon {
+            font-size: 3rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        /* Slide 3 - Story */
+        .story-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 700px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .typing {
+            overflow: hidden;
+            border-right: 3px solid #ff6b9d;
+            white-space: nowrap;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ff6b9d }
+        }
+
+        /* Slide 4 - Things I Love */
+        .love-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+        }
+
+        .love-item {
+            opacity: 0;
+            transform: translateX(-50px);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            border-left: 5px solid #ff6b9d;
+            transition: all 0.6s ease;
+            font-size: 1.1rem;
+        }
+
+        .love-item.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .love-icon {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-right: 1rem;
+            float: left;
+        }
+
+        /* Slide 5 - Wishes */
+        .wish-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            max-width: 700px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #fff, 0 0 30px #ff6b9d, 0 0 40px #ff6b9d; }
+            to { text-shadow: 0 0 20px #fff, 0 0 40px #ff6b9d, 0 0 50px #ff6b9d; }
+        }
+
+        /* Slide 6 - Ending */
+        #slide6 {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .love-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .replay-btn {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .replay-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            animation: confetti-fall 3s linear infinite;
+            z-index: 100;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .photo-gallery {
+                flex-direction: column;
+                height: 500px;
+            }
+            
+            .photo-item {
+                min-width: 100%;
+                height: 200px;
+            }
+        }
+
+        /* Scroll Indicators */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation" id="heartsContainer"></div>
+
+    <!-- Music Control -->
+    <div class="music-control">
+        <button class="music-btn" id="musicToggle">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
+    <!-- Slides -->
+    <div class="slides-container" id="slidesContainer">
+        <!-- Slide 1: Opening -->
+        <section class="slide" id="slide1">
+            <div class="slide-content">
+                <h1 class="title" id="birthdayTitle">Selamat Ulang Tahun, Sayangku Andini Aprila Putri ❤️</h1>
+                <button class="start-btn" onclick="startExperience()">
+                    <i class="fas fa-heart"></i> Klik bagian ini sayang!
+                </button>
+            </div>
+        </section>
+
+        <!-- Slide 2: Photo Memories -->
+        <section class="slide" id="slide2" style="background-image: url('https://c:\Users\User\Downloads\17an\images 2.jpg');">
+            <div class="slide-content">
+                <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 2rem; color: #ffd700;">Foto Kenangan Kita ✨</h2>
+                <div class="photo-gallery" id="photoGallery">
+                    <div class="photo-item active">
+                         <img src="c:\Users\User\Downloads\17an\images 3.HEIC" style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+</div>
+                        <div class="photo-content">
+                            <div class="photo-icon"><i class="fas fa-heart"></i></div>
+                            <div>Momen pertama kita bertemu...</div>
+                        </div>
+                    </div>
+                    <div class="photo-item active">
+                         <img src="c:\Users\User\Downloads\17an\images 4.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+                        <div class="photo-content">
+                            <div class="photo-icon"><i class="fas fa-camera"></i></div>
+                            <div>Momen pertama naik gunung</div>
+                        </div>
+                    </div>
+                    <div class="photo-item active">
+                         <img src="c:\Users\User\Downloads\17an\images 5.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:20px;">
+                        <div class="photo-content">
+                            <div class="photo-icon"><i class="fas fa-laugh"></i></div>
+                            <div>Tawa kita yang selalu bersama</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Our Story -->
+        <section class="slide" id="slide3" style="background-image: url('https:c:\Users\User\Downloads\17an\images 6.jpg');">
+            <div class="slide-content">
+                <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 2rem; color: #ffd700;"> 💕</h2>
+                <p class="story-text typing" id="Dari pertemuan pertama yang gedebak gedebuk penuh keajaiban, hingga setiap hari yang kita lalui bersama. Adek adalah anugerah terindah dalam hidupku. Setiap senyummu, setiap pelukanmu, setiap jokesmu, semuanya telah mengubah hidupku menjadi lebih berwarna. Bersama adek, setiap hari adalah petualangan baru yang penuh cinta.">
+            
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 4: Things I Love -->
+        <section class="slide" id="slide4" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+            <div class="slide-content">
+                <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 2rem; color: #d63031;">Hal yang gidgud suka dari Kamu ❤️</h2>
+                <div class="love-list" id="loveList">
+                    <div class="love-item">
+                        <span class="love-icon"><i class="fas fa-heart"></i></span>
+                        Semua jokesmu yang mencairkan suasana meski kadang garing
+                    </div>
+                    <div class="love-item">
+                        <span class="love-icon"><i class="fas fa-star"></i></span>
+                        Kebaikan yang tulus kepada semua orang
+                    </div>
+                    <div class="love-item">
+                        <span class="love-icon"><i class="fas fa-laugh"></i></span>
+                        Cara adek tertawa
+                    </div>
+                    <div class="love-item">
+                        <span class="love-icon"><i class="fas fa-hand-holding-heart"></i></span>
+                        Perhatian kecilmu yang selalu membuatku tersenyum
+                    </div>
+                    <div class="love-item">
+                        <span class="love-icon"><i class="fas fa-infinity"></i></span>
+                        Cintamu yang tak pernah pudar
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Wishes -->
+        <section class="slide" id="slide5" style="background-image: url('https:c:\Users\User\Downloads\17an\images 7.jpg');">
+            <div class="slide-content">
+                <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 2rem; color: #ffd700;">Harapan & Doa untuk Tuan Putri 🌟</h2>
+                <p class="Di Hari yang spesial ini, Semoga yang adek semogakan menjadi tersemogakan. Doa baikku selalu menyertaimu. Selamat ulang tahun sayangkuuuu, i love u more than words can say.❤️ ">      
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Ending -->
+        <section class="slide" id="slide6">
+            <div class="slide-content">
+                <h1 class="love-text">I Love You More ❤️</h1>
+                <button class="replay-btn" onclick="replayExperience()">
+                    <i class="fas fa-redo"></i> Putar Ulang
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="c:\Users\User\Downloads\17an\Stephen Sanchez - Until I Found You (Official Video) [GxldQ9eX2wo].mp3" type="audio/wav"> <!-- Placeholder, replace with romantic song URL -->
+    </audio>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i> Geser ke bawah
+    </div>
+
+    <script>
+        // Background hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        setInterval(createHeart, 300);
+
+        // Music control
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let musicPlaying = false;
+        musicToggle.addEventListener('click', () => {
+            if (musicPlaying) {
+                music.pause();
+                musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                music.play();
+                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            musicPlaying = !musicPlaying;
+        });
+
+        // Start experience
+        function startExperience() {
+            document.getElementById('slide1').scrollIntoView({ behavior: 'smooth' });
+            music.play();
+            musicPlaying = true;
+            musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+
+        // Photo gallery (simple carousel)
+        let currentPhoto = 0;
+        const photos = document.querySelectorAll('.photo-item');
+        function showPhoto(index) {
+            photos.forEach((photo, i) => {
+                photo.classList.toggle('active', i === index);
+            });
+        }
+        setInterval(() => {
+            currentPhoto = (currentPhoto + 1) % photos.length;
+            showPhoto(currentPhoto);
+        }, 3000);
+
+        // Love list animation
+        const loveItems = document.querySelectorAll('.love-item');
+        function animateLoveItems() {
+            loveItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('active');
+                }, index * 1000);
+            });
+        }
+
+        // Trigger animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'slide4') {
+                        animateLoveItems();
+                    }
+                }
+            });
+        });
+        document.querySelectorAll('.slide').forEach(slide => {
+            observer.observe(slide);
+        });
+
+        // Confetti for ending
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.background = ['#ffd700', '#ff6b9d', '#fff', '#ff7675'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // Trigger confetti when reaching slide 6
+        const slide6Observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    createConfetti();
+                }
+            });
+        });
+        slide6Observer.observe(document.getElementById('slide6'));
+
+        // Replay
+        function replayExperience() {
+            document.getElementById('slide1').scrollIntoView({ behavior: 'smooth' });
+            // Reset animations if needed
+        }
+
+        // Typing effect for story
+        const storyText = document.getElementById('storyText');
+        storyText.style.width = '100%'; // Remove typing animation after load
+    </script>
+</body>
+</html>
